@@ -1,16 +1,12 @@
-
+/* Fondo general */
 body {
-    font-family: 'Roboto', sans-serif; 
-    background-color: #829fda; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(to bottom right, #ffffff, #d6e9ff);
     color: #333;
 }
 
-
+/* Contenedor principal */
 .container {
     width: 95%;
     max-width: 1400px;
@@ -20,75 +16,104 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
     display: flex;
     flex-direction: column;
-    overflow: hidden; 
+    overflow: hidden;
+    margin: 2.5vh auto;
 }
 
+/* Encabezado */
 .header {
-    background-color: #fff;
-    padding: 25px 30px;
-    border-bottom: 1px solid #e0e0e0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #0a4ea3;
+    color: white;
+    padding: 15px 40px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border-bottom: none;
 }
-
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .logo img {
-    width: 180px; 
-    height: auto;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    animation: pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .logo h1 {
-    font-size: 2.8em;
+    font-size: 2.2em;
     margin: 0;
     font-weight: 500;
-    color: #2c3e50; 
+    color: white;
 }
 
+.estado-conexion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+.indicador {
+    width: 12px;
+    height: 12px;
+    background-color: #00ff00;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+/* Sección de acciones/botones */
 .actions {
-    background-color: #7be037;
+    background-color: #f5f8fc;
     padding: 20px 30px;
     border-bottom: 1px solid #e0e0e0;
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .actions button {
-    background-color: #5dc5cc;
+    background-color: #0a4ea3;
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
+    padding: 12px 20px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .actions button:hover {
-    background-color: #cbd355;
+    background-color: #082f6b;
+    transform: scale(1.05);
 }
 
-
+/* Contenido principal */
 .content {
     padding: 30px;
-    overflow-y: auto; 
+    overflow-y: auto;
+    flex: 1;
 }
 
-
+/* Barra de estado */
 .status-bar {
-    background-color: #2ecc71;
+    background-color: #0a4ea3;
     color: white;
-    padding: 15px;
-    border-radius: 6px;
+    padding: 15px 20px;
+    border-radius: 8px;
     margin-bottom: 25px;
     display: flex;
     align-items: center;
     gap: 10px;
+    box-shadow: 0 2px 8px rgba(10, 78, 163, 0.3);
 }
 
 .status-indicator {
@@ -96,75 +121,183 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: white;
+    background-color: #00ff00;
+    box-shadow: 0 0 5px #00ff00;
 }
 
-
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.data-table th,
-.data-table td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.data-table th {
-    background-color: #f5f5f5;
-    font-weight: 600;
-    color: #555;
-}
-
-
-.pagination {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 25px;
-}
-
-.pagination a {
-    text-decoration: none;
-    background-color: #fff;
-    color: #3498db;
-    padding: 10px 16px;
-    border-radius: 5px;
-    border: 1px solid #3498db;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.pagination a:hover {
-    background-color: #3498db;
-    color: white;
-}
-
-
+/* Formulario de búsqueda */
 .search-form {
     display: flex;
     gap: 15px;
     margin-bottom: 25px;
+    flex-wrap: wrap;
 }
 
 .search-form input[type="text"] {
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 2px solid #d6e9ff;
     width: 300px;
     max-width: 100%;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.search-form input[type="text"]:focus {
+    outline: none;
+    border-color: #0a4ea3;
 }
 
 .search-form input[type="submit"] {
-    background-color: #3498db;
+    background-color: #0a4ea3;
     color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 6px;
+    padding: 12px 24px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s;
+    font-size: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .search-form input[type="submit"]:hover {
-    background-color: #2980b9;
+    background-color: #082f6b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Tabla de datos */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.data-table th {
+    background-color: #0a4ea3;
+    font-weight: 600;
+    color: white;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f2f6ff;
+}
+
+.data-table tbody tr:hover {
+    background-color: #e6f0ff;
+    transition: background-color 0.2s;
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.pagination a {
+    text-decoration: none;
+    background-color: white;
+    color: #0a4ea3;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: 2px solid #0a4ea3;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.pagination a:hover {
+    background-color: #0a4ea3;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(10, 78, 163, 0.3);
+}
+
+.pagination a.active {
+    background-color: #0a4ea3;
+    color: white;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #0a4ea3;
+    color: white;
+    margin-top: auto;
+}
+
+/* Animación pulse */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Scrollbar personalizado */
+.content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: #0a4ea3;
+    border-radius: 10px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: #082f6b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .logo h1 {
+        font-size: 1.8em;
+    }
+    
+    .actions {
+        padding: 15px;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .search-form input[type="text"] {
+        width: 100%;
+    }
+    
+    .data-table {
+        font-size: 14px;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 8px;
+    }
 }
