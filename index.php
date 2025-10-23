@@ -20,49 +20,39 @@ if ($conn) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COLEGIO SADBOYZ - Listado de Alumnos</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logo.png">
+    <title>Sistema de Gestión - Colegio</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="icon" href="logo27.jpg">
 </head>
 <body>
-    <div class="browser-window">
-        <div class="top-bar">
-            <div class="circles">
-                <div class="circle circle-red"></div>
-                <div class="circle circle-yellow"></div>
-                <div class="circle circle-green"></div>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="logo27.jpg" alt="Logo del Colegio" class="logo-img">
+                <h1>Sistema de Gestión - Colegio</h1>
             </div>
-            <div class="address-bar"></div>
-            <div class="right-icons">
-                <div class="icon"></div>
+            <div class="estado-conexion">
+                <span class="indicador"></span>
+                BD conectada
             </div>
         </div>
+
+        <div class="actions">
+            <button onclick="mostrarMensajeConexion()">Conectar BD</button>
+            <button onclick="location.href='mostrar producto.php'">Mostrar todos</button>
+            <button onclick="location.href='index.php'">Inicio</button>
+        </div>
+
         <div class="content">
-            <div class="header">
-                <div class="logo">
-                    <img src="logo.jpg" alt="Logotipo del colegio" style="width:300px; height:200px;">
-                    <h1>COLEGIO ALLIS</h1>
-                </div>
-            </div>
-
-            <div class="actions">
-                <button onclick="mostrarMensajeConexion()">Conectar BD</button>
-                <button onclick="location.href='mostrar producto.php'">Mostrar todos</button>
-            </div>
-
             <div class="status-bar" id="status-bar">
                 <span class="status-indicator"></span>
-            </div>
-
-            <div id="infoContacto" style="display:none; padding: 10px; background-color: #f0f0f0; border-radius: 5px; margin-bottom: 10px;">
-                <p><strong>Dirección:</strong> Calle Principal #123, Ciudad</p>
-                <p><strong>Teléfono:</strong> 555-1234</p>
+                Conectado a la base de datos
             </div>
 
             <div class="data-table">
-                <h2>Listado de alumnos (<?php echo count($alumnos); ?> registros)</h2>
+                <h2>Listado de Alumnos (<?php echo count($alumnos); ?> registros)</h2>
                 <?php if (count($alumnos) > 0): ?>
-                <table border="1" cellpadding="5">
+                <table>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -70,7 +60,7 @@ if ($conn) {
                             <th>Apellido</th>
                             <th>Correo</th>
                             <th>Teléfono</th>
-                            <th>Fecha de nacimiento</th>
+                            <th>Fecha de Nacimiento</th>
                             <th>Ciudad</th>
                             <th>Promedio</th>
                         </tr>
@@ -91,14 +81,30 @@ if ($conn) {
                     </tbody>
                 </table>
                 <?php else: ?>
-                    <p>No hay registros de alumnos en la base de datos.</p>
+                    <p style="text-align: center; padding: 20px; color: #666;">No hay registros de alumnos en la base de datos.</p>
                 <?php endif; ?>
             </div>
         </div>
+
+        <footer>
+            <p>© 2025 Sistema de Gestión - Colegio</p>
+        </footer>
     </div>
 
     <script>
         var conexionExitosa = <?php echo json_encode($conexion_exitosa); ?>;
+
+        // Actualizar indicador al cargar la página
+        window.onload = function() {
+            var indicador = document.querySelector('.indicador');
+            if (conexionExitosa) {
+                indicador.style.backgroundColor = '#00ff00';
+                indicador.style.boxShadow = '0 0 5px #00ff00';
+            } else {
+                indicador.style.backgroundColor = '#ff0000';
+                indicador.style.boxShadow = '0 0 5px #ff0000';
+            }
+        };
 
         function mostrarMensajeConexion() {
             var statusBar = document.getElementById('status-bar');
@@ -106,12 +112,12 @@ if ($conn) {
 
             if (conexionExitosa) {
                 statusIndicator.textContent = '✔';
-                statusIndicator.style.color = 'green';
+                statusIndicator.style.color = 'white';
                 statusBar.innerHTML = '<span class="status-indicator">✔</span> BD conectada exitosamente';
                 statusBar.style.backgroundColor = '#2ecc71';
             } else {
                 statusIndicator.textContent = '✖';
-                statusIndicator.style.color = 'red';
+                statusIndicator.style.color = 'white';
                 statusBar.innerHTML = '<span class="status-indicator">✖</span> Error al conectar a la BD';
                 statusBar.style.backgroundColor = '#e74c3c';
             }
